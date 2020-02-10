@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhatsOpp.View.LoginView"
+             BackgroundColor="Aquamarine"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="AliceBlue" Margin="10" VerticalOptions="FillAndExpand">
+            <Label Margin="20" Text="WhatsOpp™" FontSize="Header" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Aquamarine" FontAttributes="Bold"/>
+            <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
+                <Label Text="Para utilizar WhatsOpp™ debes crearte una cuenta" HorizontalTextAlignment="Center" />
+
+                <Grid Margin="25" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Nombre de usuario" Grid.Row="0"  Grid.Column="0"/>
+                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding LoginDTO.Username}"/>
+
+                    <Label Text="Contraseña" Grid.Row="1"  Grid.Column="0"/>
+                    <Entry Grid.Row="1" Grid.Column="1" IsPassword="True" Text="{Binding LoginDTO.Password}"/>
+
+                </Grid>
+                <Label Text="   "/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+
+                <StackLayout Margin="20">
+                    <Label Text="Pulsa 'Iniciar sesión' para empezar a chatear!" HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <Grid Margin="25" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Iniciar sesión" FontSize="Medium" Clicked="Login_Clicked" TextColor="White" BackgroundColor="Aquamarine" Grid.Row="0"></Button>
+                    <Button  Margin="5" Text="¿No tienes cuenta? Registrate" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Row="1" Clicked="Register_Clicked"/>
+                </Grid>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

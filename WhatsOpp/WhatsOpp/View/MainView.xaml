@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:WhatsOpp.View.MainViewPages"
+             mc:Ignorable="d"
+             x:Class="WhatsOpp.View.MainView"
+            NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">  
+  <!--Pages can be added as references or inline-->
+    <TabbedPage.Children>
+        <local:ChatsPage 
+                Title="Chats"
+                Icon="ic_chat.png"
+                Appearing="ChatsPage_Appearing"
+                >
+        </local:ChatsPage>
+        
+        <local:ContactsPage Title="Contactos"
+                Icon="ic_contacts.png">
+        </local:ContactsPage>
+        
+        <local:ProfilePage Title="Perfil"
+                Icon="ic_contacts.png">
+        </local:ProfilePage>
+    </TabbedPage.Children>
+    <!--
+    <NavigationPage Title="Chats">
+        <x:Arguments>
+            <local:ChatsPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Contactos">
+        <x:Arguments>
+            <local:ContactsPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Perfil">
+        <x:Arguments>
+            <local:ProfilePage/>
+        </x:Arguments>
+    </NavigationPage>
+    -->
+</TabbedPage>

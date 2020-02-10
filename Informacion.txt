@@ -1,0 +1,97 @@
+--------------------------------------------
+----BBDD
+--------------------------------------------
+[BBDD App]
+-Profile
+	+Username
+	+Name
+	+Email
+	+phone
+	+Token
+
+-Contact
+	+ContactID
+	+Username
+	+Name
+
+-Chat
+	+ChatID
+	+ContactID
+	
+-Message
+	+MessageID
+	+ChatID
+	+Order
+	+Date
+	+Text
+
+[BBDD Server]
+-Users
+	+UserID (autogenerado)
+	+Username
+	+Password (has)
+	+Name
+	+phone
+	+Email
+	+Token (generado por el servidor cuando inicias sesion)
+
+-Contacts
+	+UserID
+	+ContactID
+
+-Chats
+	+ChatID (autogenerado)	
+	+UserID1
+	+UserID2
+	+Archi
+	
+-Messages
+	+MessageID (autogenerado)
+	+OrderNum
+	+Date
+	+Text
+	+Read (boolean)
+	+UserID
+	+ChatID
+--------------------------------------------
+----Metodos							(enviar)	[recibir]
+--------------------------------------------
+---[App]
+	SendMessage (Token, ChatID, Message, Date)
+	GetMessage (ChatID, Message, Date)
+	SendSingin (Username, password, email, telephone) - [token, contactos, chats, perfil]
+	SendLogin (username, passowrd) - [token, contactos, chats, perfil]
+	SendContactAdd (Token, ContactID) - [ContactID] OR ["No encontrado"]
+	SendChatAdd (Token, ContactID) - [ChatID] OR ["Nose ha cread"]
+
+---[serivor]
+	SendMessage (ChatID, Message, Date)			
+	GetMessage [Token, ChatID, Message, Date]
+		+checkToken
+		+orden++;
+		
+	GetSingin [Username, password, email, telephone] - (token)
+	GetLogin [username, passowrd] - (token, contactos, chats, perfil)
+		+genera token
+
+	GetContactAdd [Token, ContactID] - (ContactID) OR ("No encontrado")
+	GetChatAdd [Token, ContactID] - (ChatID) OR ("no se ha creado")
+--------------------------------------------
+----Codigos
+--------------------------------------------
+001			TOKEN_VALID
+
+-ERRORES DE CONEXION, CODIGO, ETC
+	101 		SINGIN_ERROR
+	102 		LOGIN_ERROR
+	103 		GET_MESSAGE_ERROR
+	104 		SEND_MESSAGE_ERROR
+	105			CONTACT_ADD_ERROR
+	106 		CHAT_ADD_ERROR
+	107 		TOKEN_VERIFY_ERROR
+	108 		CONNECTION_LOST
+	109			INVALID_JSON_SYNTAXIS
+-ERRORES DEL USUARIO
+	201			PASSWORD_OR_USER_INCORRECT
+	202			USER_ALREADY_EXIST
+	203			TOKEN_INVALID

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhatsOpp.View.InitView"
+             BackgroundColor="Aquamarine"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             >
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="AliceBlue" Margin="10" VerticalOptions="FillAndExpand">
+            <Label Margin="20" Text="WhatsOpp™" FontSize="Header" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Aquamarine" FontAttributes="Bold"/>
+
+            <Image
+                 VerticalOptions="Center" >
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <OnPlatform.Android>
+                            <FileImageSource File="InitViewImage.png"/>
+                        </OnPlatform.Android>
+                        <OnPlatform.WinPhone>
+                            <FileImageSource File="Assets/InitViewImage.png"/>
+                        </OnPlatform.WinPhone>
+                    </OnPlatform>
+                </Image.Source>
+            </Image>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+
+                <StackLayout Margin="20">
+                    <Label Text="Toca 'Aceptar y continuar' para aceptar los Terminos y Condiciones de WhatsOpp™ y la Política de Privacidad" HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button  Margin="5" Text="Terminos y Condiciones" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Row="0" Clicked="Terms_Clicked"/>
+                    <Button  Margin="5" Text="Política de Privacidad" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Row="1" Clicked="Policy_Clicked"/>
+                </Grid>
+
+
+                <Grid Margin="25" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Aceptar y continuar" FontSize="Medium" Clicked="Accept_Clicked" TextColor="White" BackgroundColor="Aquamarine"></Button>
+                </Grid>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
