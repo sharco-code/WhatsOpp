@@ -22,11 +22,14 @@ namespace WhatsOpp.View {
             try
             {
                 ((LoginViewModel)BindingContext).SendLogin();
+                await Navigation.PushAsync(new MainView());
             }
             catch (MyException ex)
             {
                 await DisplayAlert("Info", ex.Message, "Aceptar");
+                return;
             }
+
         }
 
         private void Register_Clicked(object sender, EventArgs e)

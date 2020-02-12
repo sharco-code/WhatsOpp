@@ -21,12 +21,12 @@ $app->post('/singin', function ($request, $response, $args) {
         $datos = $request->getParsedBody();
     //Añadir name
         try {
-            if(!isset($datos['Username']))throw new Exception("Usuario no introducido",101);
-            if(!isset($datos['Password']))throw new Exception("Password no introducida",101);
-            if(!isset($datos['Email']))throw new Exception("Email no introducido",101);
-            if(!isset($datos['Phone']))throw new Exception("Phone no introducido",101);
-            if(!isset($datos['Name']))throw new Exception("Name no introducido",101);
-
+            if(!isset($datos['Username']))throw new Exception("Usuario no introducido",204);
+            if(!isset($datos['Password']))throw new Exception("Password no introducida",205);
+            if(!isset($datos['Email']))throw new Exception("Email no introducido",206);
+            if(!isset($datos['Phone']))throw new Exception("Phone no introducido",207);
+            if(!isset($datos['Name']))throw new Exception("Name no introducido",208);
+            if(userExist($datos['Username'])) throw new Exception("USER_ALREADY_EXIST", 202);
 
             $sql = "INSERT INTO user (`username`, `password`,`email`,`phone`,`name`)VALUES('" . $datos['Username'] . "','" . $datos['Password'] . "','" . $datos['Email'] . "'," . $datos['Phone'] .",'".$datos['Name']. "')";
 
@@ -61,9 +61,11 @@ $app->post('/login', function ($request, $response, $args) {
 
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (sizeof($data) != 1){
-            throw new Exception("No user/password encontrado",102);
+            throw new Exception("No user/password encontrado",201);
         }
         return json_encode(["token" => generateToken($datos['Username'])], 200);
+        //return json_encode(["perfil" => getPerfil(getIdByUsername($datos['Username']))]);
+        //return json_encode(["perfil" => getPerfil(getIdByUsername($datos['Username']))],200);
     } catch (PDOException $e) {
         return managerError($e);
     } catch (Exception $e) {
@@ -115,7 +117,7 @@ function checkToken($token){
 
 }
 
-$app->get('/chat/contact', function ($request, $response, $args) {
+$app->get('/contact', function ($request, $response, $args) {
 
     $datos = $request->getParsedBody();
     if(!checkToken($datos['Token'])){
@@ -138,26 +140,34 @@ $app->get('/chat/contact', function ($request, $response, $args) {
 
 });
 
-$app->post('/chat/contact/add', function ($request, $response, $args) {
+$app->post('/contact/add', function ($request, $response, $args) {
 
     $datos = $request->getParsedBody();
 
     try {
         if(!isset($datos['Token'])) throw new Exception("No se envio el token",105);
+        if(!isset($datos['Username'])) throw new Exception("No se envio el username",105);
         if(!checkToken($datos['Token'])){
             throw new Exception("Error token",105);
         }
-        $id = getUserId($datos['Token']);
-        if(!checkUserId($datos['ContactId'])) throw new Exception("Error contactid, Not Found",105);
-        if($datos['ContactId']==$id) throw new Exception("Error contactid",105);
 
-        $sql = "INSERT INTO contact (`userid`, `contactid`)VALUES(" . $id . "," . $datos['ContactId'] .  ")";
+        if (strpos($datos['Username'], ' ') !== false) throw new Exception("Username invalido",209);
+
+
+
+        $id = getUserId($datos['Token']);
+        //Comprobar que el username existe;
+        $ContactId = getIdByUsername($datos['Username']);
+
+        if($ContactId==$id) throw new Exception("Error contactid es igual que el userid",105);
+
+        $sql = "INSERT INTO contact (`userid`, `contactid`)VALUES(" . $id . "," . $ContactId .  ")";
 
 
         $db = connectDB();
         $stmt = $db->query($sql);
         if ($stmt == False) {
-            throw new Exception("Error de query en insertar user",105);
+            throw new Exception("Error de query en insertar contacto",105);
         }
 
 
@@ -172,6 +182,7 @@ $app->post('/chat/contact/add', function ($request, $response, $args) {
     }
 
 });
+
 
 $app->delete('/chat/contact/delete', function ($request, $response, $args) {
 
@@ -204,7 +215,7 @@ $app->delete('/chat/contact/delete', function ($request, $response, $args) {
     }
 
 });
-$app->post('/chat/chat/add', function ($request, $response, $args) {
+$app->post('/chat/add', function ($request, $response, $args) {
 
     $datos = $request->getParsedBody();
     if(!checkToken($datos['Token'])){
@@ -236,7 +247,7 @@ $app->post('/chat/chat/add', function ($request, $response, $args) {
 
 });
 
-$app->get('/chat/chat', function ($request, $response, $args) {
+$app->get('/chat', function ($request, $response, $args) {
 
     $datos = $request->getParsedBody();
     if(!checkToken($datos['Token'])){
@@ -262,8 +273,23 @@ $app->get('/chat/chat', function ($request, $response, $args) {
 });
 
 
-function getUserId($token){
+function gettUserId($token){
     $sql = "SELECT * FROM user WHERE token = '". $token."'";
+    try {
+        $db = connectDB();
+        $stmt = $db->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data[0]['userid'];
+    } catch (PDOException $e) {
+        return managerError($e);
+    } catch (Exception $e) {
+        return managerError($e);
+    }
+}
+function geIdByUsername($username){
+    $sql = "SELECT userid FROM user WHERE username = '". $username."'";
     try {
         $db = connectDB();
         $stmt = $db->query($sql);
@@ -297,7 +323,7 @@ function managerError(Exception $e){
     return json_encode(["Message"=>$e->getMessage(),"Code"=>$e->getCode()],200);
 
 }
-/*
+
 $app->post('/message/add', function ($request, $response, $args) {
 
     $datos = $request->getParsedBody();
@@ -307,20 +333,19 @@ $app->post('/message/add', function ($request, $response, $args) {
         if(!isset($datos['Date'])) throw new Exception("No se envio la fecha",104);
         if(!isset($datos['Message'])) throw new Exception("No se envio el message",104);
         if(!isset($datos['Chatid'])) throw new Exception("No se envio el chatid",104);
-        if(!checkToken($datos['Token'])){
-            throw new Exception("Error token",104;
-        }
+        if(!checkToken($datos['Token']))throw new Exception("Error token",104);
+
         $id = getUserId($datos['Token']);
+        if(!isInChat($datos['Chatid'],$id)) throw new Exception("Usuario no pertenece a ese chat");
         $order = getMaxOrder($datos['Chatid'])+1;
 
-        ///Comprobar que el usuario esta en ese chat
         $sql = "INSERT INTO message (`chatid`, `userid`,`message`,`date`,`order`)VALUES(".$datos['Chatid'].",".  $id . ",'" . $datos['Message'] .  "','". $datos['Date'] .  "',".$order.")";
 
 
         $db = connectDB();
         $stmt = $db->query($sql);
         if ($stmt == False) {
-            throw new Exception("Error de query en insertar message",105);
+            throw new Exception("Error de query en insertar message",104);
         }
 
 
@@ -350,6 +375,70 @@ function getMaxOrder($chatid){
         return managerError($e);
     }
 }
-*/
+
+function isInChat($chatid,$userid){
+    $sql = "SELECT count(*) 'Cantidad' FROM chat WHERE chatid = ".$chatid." AND userid1 =".$userid." OR userid2 = ".$userid;
+    try {
+        $db = connectDB();
+        $stmt = $db->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data[0]['Cantidad'] == 1;
+    } catch (PDOException $e) {
+        return managerError($e);
+    } catch (Exception $e) {
+        return managerError($e);
+    }
+}
+function userExist($username){
+    $sql = "SELECT count(*) 'Cantidad' FROM user WHERE username = '".$username."'";
+    try {
+        $db = connectDB();
+        $stmt = $db->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data[0]['Cantidad'] == 1;
+    } catch (PDOException $e) {
+        return managerError($e);
+    } catch (Exception $e) {
+        return managerError($e);
+    }
+}
+
+function getPerfil($id){
+    $sql = "SELECT username, name,email,phone,token FROM user WHERE userid = ".$id;
+    try {
+        $db = connectDB();
+        $stmt = $db->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+
+
+    } catch (PDOException $e) {
+        return managerError($e);
+    } catch (Exception $e) {
+        return managerError($e);
+    }
+}
+
+function getContacts($id){
+    $sql = "SELECT userid \"contactid\",username,alias FROM user WHERE userid IN (SELECT contactid FROM contact WHERE userid = ".$id.")";
+    try {
+        $db = connectDB();
+        $stmt = $db->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    } catch (PDOException $e) {
+        return managerError($e);
+    } catch (Exception $e) {
+        return managerError($e);
+    }
+}
+
 
 $app->run();

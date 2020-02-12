@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace WhatsOpp.Model {
-    public class Chat {
+    public class Configuration {
         [PrimaryKey]
-        public int ChatID { get; set; }
-        public int ContactID { get; set; }
+        public int IsFirstTime { get; set; }
+
+        public Configuration()
+        {
+
+        }
     }
 }

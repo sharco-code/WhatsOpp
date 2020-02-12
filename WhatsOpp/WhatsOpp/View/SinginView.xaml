@@ -48,7 +48,7 @@
                     <Entry Grid.Row="0" Grid.Column="1" Text="{Binding SinginDTO.Name}"/>
 
                     <Label Text="Teléfono" Grid.Row="1"  Grid.Column="0"/>
-                    <Entry Grid.Row="1" Grid.Column="1" Text="{Binding SinginDTO.Phone}"/>
+                    <Entry x:Name="EntryPhone" Grid.Row="1" Grid.Column="1" Text="{Binding SinginDTO.Phone}"/>
 
                     <Label Text="Email" Grid.Row="2"  Grid.Column="0"/>
                     <Entry Grid.Row="2" Grid.Column="1" Text="{Binding SinginDTO.Email}"/>

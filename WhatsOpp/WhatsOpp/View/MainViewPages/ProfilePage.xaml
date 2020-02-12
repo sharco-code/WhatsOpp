@@ -4,12 +4,40 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundColor="Aquamarine"
              x:Class="WhatsOpp.View.MainViewPages.ProfilePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Perfil"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BackgroundColor="AliceBlue" VerticalOptions="FillAndExpand">
+            <Grid Margin="25" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <Label Text="Nombre de usuario" Grid.Row="0"  Grid.Column="0" />
+                <Entry Grid.Row="0" Grid.Column="1" />
+
+                <Label Text="Contraseña" Grid.Row="1"  Grid.Column="0"/>
+                <Entry Grid.Row="1" Grid.Column="1"/>
+
+                <Label Text="Email" Grid.Row="2"  Grid.Column="0"/>
+                <Entry Grid.Row="2" Grid.Column="1" />
+
+                <Label Text="Telefono" Grid.Row="3"  Grid.Column="0"/>
+                <Entry Grid.Row="3" Grid.Column="1" />
+
+                <Label Text="Nombre" Grid.Row="4"  Grid.Column="0"/>
+                <Entry Grid.Row="4" Grid.Column="1" />
+
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

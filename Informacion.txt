@@ -50,7 +50,7 @@
 	+OrderNum
 	+Date
 	+Text
-	+Read (boolean)
+	+IsReaded (boolean)
 	+UserID
 	+ChatID
 --------------------------------------------
@@ -59,9 +59,9 @@
 ---[App]
 	SendMessage (Token, ChatID, Message, Date)
 	GetMessage (ChatID, Message, Date)
-	SendSingin (Username, password, email, telephone) - [token, contactos, chats, perfil]
+	SendSingin (Username, password, email, telephone) - [token, contactos, chats(sin msgs), perfil]
 	SendLogin (username, passowrd) - [token, contactos, chats, perfil]
-	SendContactAdd (Token, ContactID) - [ContactID] OR ["No encontrado"]
+	SendContactAdd (Token, ContactID) - [ContactID, Nombre, Username] OR ["No encontrado"]
 	SendChatAdd (Token, ContactID) - [ChatID] OR ["Nose ha cread"]
 
 ---[serivor]
@@ -71,10 +71,10 @@
 		+orden++;
 		
 	GetSingin [Username, password, email, telephone] - (token)
-	GetLogin [username, passowrd] - (token, contactos, chats, perfil)
+	GetLogin [username, passowrd] - (token, contactos, chats(sin msgs), perfil)
 		+genera token
 
-	GetContactAdd [Token, ContactID] - (ContactID) OR ("No encontrado")
+	GetContactAdd [Token, ContactID] - (ContactID, Nombre, Username) OR ("No encontrado")
 	GetChatAdd [Token, ContactID] - (ChatID) OR ("no se ha creado")
 --------------------------------------------
 ----Codigos
@@ -95,3 +95,9 @@
 	201			PASSWORD_OR_USER_INCORRECT
 	202			USER_ALREADY_EXIST
 	203			TOKEN_INVALID
+	204			NO_USERNAME
+	205			NO_PASSWORD
+	206			NO_EMAIL
+	207			NO_PHONE
+	208			NO_NAME
+	209			USERNAME_INVALID

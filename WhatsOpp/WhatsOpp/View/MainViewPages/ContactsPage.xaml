@@ -4,10 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundColor="AliceBlue"
              x:Class="WhatsOpp.View.MainViewPages.ContactsPage">
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout >
             <Entry Placeholder="Nombre contacto"
                 Margin="10"
                 HorizontalOptions="FillAndExpand"

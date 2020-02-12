@@ -6,25 +6,27 @@
              xmlns:local="clr-namespace:WhatsOpp.View.MainViewPages"
              mc:Ignorable="d"
              x:Class="WhatsOpp.View.MainView"
-            NavigationPage.HasNavigationBar="False"
+             BackgroundColor="Aquamarine"
+             NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">  
   <!--Pages can be added as references or inline-->
-    <TabbedPage.Children>
+    <TabbedPage.Children BackgroundColor="AliceBlue" Margin="10" VerticalOptions="FillAndExpand">
         <local:ChatsPage 
                 Title="Chats"
                 Icon="ic_chat.png"
                 Appearing="ChatsPage_Appearing"
                 >
         </local:ChatsPage>
-        
+
         <local:ContactsPage Title="Contactos"
                 Icon="ic_contacts.png">
         </local:ContactsPage>
-        
+
         <local:ProfilePage Title="Perfil"
                 Icon="ic_contacts.png">
         </local:ProfilePage>
     </TabbedPage.Children>
+
     <!--
     <NavigationPage Title="Chats">
         <x:Arguments>
