@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WhatsOpp.DTO;
+using WhatsOpp.DTO.Send;
 using WhatsOpp.Utils;
 using WhatsOpp.ViewModel;
 using Xamarin.Forms;
@@ -22,7 +18,15 @@ namespace WhatsOpp.View {
             try
             {
                 ((LoginViewModel)BindingContext).SendLogin();
-                await Navigation.PushAsync(new MainView());
+                await Navigation.PushAsync(new MainView
+                {
+                    /*
+                    BindingContext = new LoginViewModel
+                    {
+                        LoginSendDTO = new LoginSendDTO()
+                    }
+                    */
+                });
             }
             catch (MyException ex)
             {
@@ -38,7 +42,7 @@ namespace WhatsOpp.View {
             {
                 BindingContext = new SinginViewModel
                 {
-                    SinginDTO = new SinginDTO()
+                    SinginSendDTO = new SinginSendDTO()
                 }
             });
         }

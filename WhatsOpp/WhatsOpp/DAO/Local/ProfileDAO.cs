@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WhatsOpp.Model;
+using WhatsOpp.Model.Local;
 
 namespace WhatsOpp.DAO.Local {
     public class ProfileDAO {
@@ -38,6 +39,10 @@ namespace WhatsOpp.DAO.Local {
             {
                 return result[0];
             }
+        }
+        internal void DeleteAll()
+        {
+            connection.DeleteAsync(0).Wait();
         }
     }
 }

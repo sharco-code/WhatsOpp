@@ -9,11 +9,24 @@
 
     <ContentPage.Content>
         <StackLayout >
-            <Entry Placeholder="Nombre contacto"
-                Margin="10"
-                HorizontalOptions="FillAndExpand"
-                Text="Texto">
-            </Entry>
+           <Grid Margin="25"  BackgroundColor="Azure">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label FontSize="Large" HorizontalOptions="Center"/>
+                <ListView Margin="20" ItemTapped="ContactList_ItemTapped" ItemsSource="{Binding ContactList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                            <TextCell Text="{Binding Username}" Detail="{Binding Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

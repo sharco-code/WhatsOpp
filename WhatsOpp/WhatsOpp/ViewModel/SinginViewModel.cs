@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using WhatsOpp.DAO;
-using WhatsOpp.DTO;
+using WhatsOpp.DAO.Server;
+using WhatsOpp.DTO.Send;
 using WhatsOpp.Utils;
 
 namespace WhatsOpp.ViewModel {
     public class SinginViewModel {
 
-        public SinginDTO SinginDTO { get; set; }
+        public SinginSendDTO SinginSendDTO { get; set; }
 
         private SinginDAO singinDAO = new SinginDAO();
 
@@ -16,7 +17,7 @@ namespace WhatsOpp.ViewModel {
         {
             try
             {
-                string token = singinDAO.Singin(SinginDTO);
+                string token = singinDAO.Singin(SinginSendDTO);
             }
             catch(MyException e)
             {

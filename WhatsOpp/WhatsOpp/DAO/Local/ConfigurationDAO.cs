@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WhatsOpp.Model;
+using WhatsOpp.Model.Local;
 
 namespace WhatsOpp.DAO.Local {
     public class ConfigurationDAO {

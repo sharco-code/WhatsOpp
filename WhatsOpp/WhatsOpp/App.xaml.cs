@@ -2,6 +2,7 @@
 using System;
 using WhatsOpp.Config;
 using WhatsOpp.Model;
+using WhatsOpp.Model.Local;
 using WhatsOpp.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,15 +22,15 @@ namespace WhatsOpp {
         protected override void OnStart()
         {
             //Crear o cargar las tablas de base de datos a partir de los modelos
-            /*
-            connection = new SQLiteAsyncConnection(Cfg.Database);
-            connection.CreateTableAsync<Profile>().Wait();
             
+            connection = new SQLiteAsyncConnection(Cfg.Database);
+
+            connection.CreateTableAsync<Profile>().Wait();
             connection.CreateTableAsync<Chat>().Wait();
             connection.CreateTableAsync<Contact>().Wait();
             connection.CreateTableAsync<Message>().Wait();
             connection.CreateTableAsync<Configuration>().Wait();
-            */
+            
         }
 
         protected override void OnSleep()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WhatsOpp.DTO;
+using WhatsOpp.DTO.Send;
 using WhatsOpp.Utils;
 using WhatsOpp.ViewModel;
 using Xamarin.Forms;
@@ -85,7 +86,7 @@ namespace WhatsOpp.View {
             {
                 BindingContext = new LoginViewModel
                 {
-                    LoginDTO = new LoginDTO()
+                    LoginSendDTO = new LoginSendDTO()
                 }
             });
         }

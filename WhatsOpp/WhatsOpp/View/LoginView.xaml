@@ -25,10 +25,10 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Nombre de usuario" Grid.Row="0"  Grid.Column="0"/>
-                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding LoginDTO.Username}"/>
+                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding LoginSendDTO.Username}"/>
 
                     <Label Text="Contraseña" Grid.Row="1"  Grid.Column="0"/>
-                    <Entry Grid.Row="1" Grid.Column="1" IsPassword="True" Text="{Binding LoginDTO.Password}"/>
+                    <Entry Grid.Row="1" Grid.Column="1" IsPassword="True" Text="{Binding LoginSendDTO.Password}"/>
 
                 </Grid>
                 <Label Text="   "/>

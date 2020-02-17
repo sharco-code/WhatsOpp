@@ -25,10 +25,10 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Nombre de usuario" Grid.Row="0"  Grid.Column="0"/>
-                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding SinginDTO.Username}"/>
+                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding SinginSendDTO.Username}"/>
 
                     <Label Text="Contraseña" Grid.Row="1"  Grid.Column="0"/>
-                    <Entry Grid.Row="1" Grid.Column="1" IsPassword="True" Text="{Binding SinginDTO.Password}"/>
+                    <Entry Grid.Row="1" Grid.Column="1" IsPassword="True" Text="{Binding SinginSendDTO.Password}"/>
 
                 </Grid>
                 <Label Text="   "/>
@@ -45,13 +45,13 @@
 
 
                     <Label Text="Nombre" Grid.Row="0"  Grid.Column="0" />
-                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding SinginDTO.Name}"/>
+                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding SinginSendDTO.Name}"/>
 
                     <Label Text="Teléfono" Grid.Row="1"  Grid.Column="0"/>
-                    <Entry x:Name="EntryPhone" Grid.Row="1" Grid.Column="1" Text="{Binding SinginDTO.Phone}"/>
+                    <Entry x:Name="EntryPhone" Grid.Row="1" Grid.Column="1" Text="{Binding SinginSendDTO.Phone}"/>
 
                     <Label Text="Email" Grid.Row="2"  Grid.Column="0"/>
-                    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding SinginDTO.Email}"/>
+                    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding SinginSendDTO.Email}"/>
                     
                 </Grid>
             </StackLayout>

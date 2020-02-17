@@ -12,6 +12,23 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <Label Text="Nombre de usuario" Grid.Row="0"  Grid.Column="0" />
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Profile.Username}" IsEnabled="False"/>
+
+                <Label Text="Contraseña" Grid.Row="1"  Grid.Column="0"/>
+                <Entry Grid.Row="1" Grid.Column="1" IsPassword="True" Text="****" IsEnabled="False"/>
+
+            </Grid>
+            <Label Text="   "/>
+            <Grid Margin="25" >
+                <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
@@ -21,23 +38,31 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
+                <Label Text="Email" Grid.Row="0"  Grid.Column="0"/>
+                <Entry Grid.Row="0" Grid.Column="1" IsEnabled="False" Text="{Binding Profile.Email}"/>
 
-                <Label Text="Nombre de usuario" Grid.Row="0"  Grid.Column="0" />
-                <Entry Grid.Row="0" Grid.Column="1" />
-
-                <Label Text="Contraseña" Grid.Row="1"  Grid.Column="0"/>
-                <Entry Grid.Row="1" Grid.Column="1"/>
-
-                <Label Text="Email" Grid.Row="2"  Grid.Column="0"/>
-                <Entry Grid.Row="2" Grid.Column="1" />
-
-                <Label Text="Telefono" Grid.Row="3"  Grid.Column="0"/>
-                <Entry Grid.Row="3" Grid.Column="1" />
-
-                <Label Text="Nombre" Grid.Row="4"  Grid.Column="0"/>
-                <Entry Grid.Row="4" Grid.Column="1" />
+                <Label Text="Telefono" Grid.Row="1"  Grid.Column="0"/>
+                <Entry Grid.Row="1" Grid.Column="1" IsEnabled="False" Text="{Binding Profile.Phone}"/>
+    
+                <Label Text="Nombre" Grid.Row="2"  Grid.Column="0"/>
+                <Entry Grid.Row="2" Grid.Column="1" IsEnabled="False" Text="{Binding Profile.Name}"/>
 
             </Grid>
+            <StackLayout VerticalOptions="EndAndExpand">
+
+
+                <Grid Margin="25" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button  Text="Cerrar Sesión" FontSize="Small" Clicked="Logout_Clicked" TextColor="White" BackgroundColor="Aquamarine" Grid.Column="0"></Button>
+                    <Button  Margin="5" Text="Editar perfil" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Column="1" Clicked="Edit_Clicked"/>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WhatsOpp.DTO;
+using WhatsOpp.DTO.Send;
 using WhatsOpp.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,7 +25,7 @@ namespace WhatsOpp.View {
             {
                 BindingContext = new SinginViewModel
                 {
-                    SinginDTO = new SinginDTO()
+                    SinginSendDTO = new SinginSendDTO()
                 }
             }); 
             
