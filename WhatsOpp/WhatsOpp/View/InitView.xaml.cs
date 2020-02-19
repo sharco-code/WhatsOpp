@@ -19,8 +19,15 @@ namespace WhatsOpp.View {
 
         private void Accept_Clicked(object sender, EventArgs e)
         {
-            //App.Current.MainPage = new SinginView();
-            
+            App.Current.MainPage = new SinginView
+            {
+                BindingContext = new SinginViewModel
+                {
+                    SinginSendDTO = new SinginSendDTO()
+                }
+            };
+            /*
+             * 
             Navigation.PushAsync(new SinginView
             {
                 BindingContext = new SinginViewModel
@@ -28,6 +35,7 @@ namespace WhatsOpp.View {
                     SinginSendDTO = new SinginSendDTO()
                 }
             }); 
+            */
             
         }
 

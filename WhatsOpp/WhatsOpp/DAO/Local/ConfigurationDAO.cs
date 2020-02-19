@@ -29,6 +29,19 @@ namespace WhatsOpp.DAO.Local {
             if (configuration == null) throw new Exception("ConfigurationDAO [Delete] - OBJECT_NULL");
             connection.DeleteAsync(configuration).Wait();
         }
+        internal Boolean isEmpty()
+        {
+            List<Configuration> result = connection.QueryAsync<Configuration>("SELECT * FROM Configuration").Result;
+            if ((result == null) || (result.Count == 0))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
         internal int GetValue()
         {
             List<Configuration> result = connection.QueryAsync<Configuration>("SELECT * FROM Configuration").Result;

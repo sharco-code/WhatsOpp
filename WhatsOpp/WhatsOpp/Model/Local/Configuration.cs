@@ -12,5 +12,9 @@ namespace WhatsOpp.Model.Local {
         {
 
         }
+        public Configuration(int IsFirstTime)
+        {
+            this.IsFirstTime = IsFirstTime;
+        }
     }
 }

@@ -22,6 +22,9 @@ namespace WhatsOpp.ViewModel {
 
         public void LogOut()
         {
+            profileDAO.DeleteAll();
+            contactDAO.DeleteAll();
+            chatDAO.DeleteAll();
         }
     }
 }

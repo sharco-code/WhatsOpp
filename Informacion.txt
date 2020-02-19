@@ -61,7 +61,7 @@
 	GetMessage (ChatID, Message, Date)
 	SendSingin (Username, password, email, telephone) - [token, contactos, chats(sin msgs), perfil]
 	SendLogin (username, passowrd) - [token, contactos, chats, perfil]
-	SendContactAdd (Token, ContactID) - [ContactID, Nombre, Username] OR ["No encontrado"]
+	SendContactAdd (Token, username) - [ContactID, Nombre, Username] OR ["No encontrado"]
 	SendChatAdd (Token, ContactID) - [ChatID] OR ["Nose ha cread"]
 
 ---[serivor]
@@ -74,7 +74,7 @@
 	GetLogin [username, passowrd] - (token, contactos, chats(sin msgs), perfil)
 		+genera token
 
-	GetContactAdd [Token, ContactID] - (ContactID, Nombre, Username) OR ("No encontrado")
+	GetContactAdd [Token, username] - (ContactID, Nombre, Username) OR ("No encontrado")
 	GetChatAdd [Token, ContactID] - (ChatID) OR ("no se ha creado")
 --------------------------------------------
 ----Codigos

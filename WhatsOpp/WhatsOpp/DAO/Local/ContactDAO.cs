@@ -33,5 +33,22 @@ namespace WhatsOpp.DAO.Local {
             var l = connection.Table<Contact>().ToListAsync().Result;
             return new ObservableCollection<Contact>(l);
         }
+        internal int CountRows()
+        {
+            List<Contact> result = connection.QueryAsync<Contact>("SELECT * FROM Contact").Result;
+            if ((result == null) || (result.Count == 0))
+            {
+                return 0;
+            }
+            else
+            {
+                return result.Count;
+            }
+        }
+        internal void DeleteAll()
+        {
+            connection.ExecuteAsync("Delete from Contact");
+
+        }
     }
 }

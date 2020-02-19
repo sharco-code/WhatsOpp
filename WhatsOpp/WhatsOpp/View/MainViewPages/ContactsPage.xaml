@@ -8,25 +8,47 @@
              x:Class="WhatsOpp.View.MainViewPages.ContactsPage">
 
     <ContentPage.Content>
+        
         <StackLayout >
-           <Grid Margin="25"  BackgroundColor="Azure">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            
+            
+            <StackLayout VerticalOptions="EndAndExpand">
+                <ScrollView>
+                    <Grid Margin="25"  BackgroundColor="Azure">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-            <Label FontSize="Large" HorizontalOptions="Center"/>
-                <ListView Margin="20" ItemTapped="ContactList_ItemTapped" ItemsSource="{Binding ContactList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                            <TextCell Text="{Binding Username}" Detail="{Binding Name}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            </Grid>
+                        <Label FontSize="Large" HorizontalOptions="Center"/>
+                        <ListView Margin="20" ItemTapped="ContactList_ItemTapped" ItemsSource="{Binding ContactList}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding Username}" Detail="{Binding Name}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </ScrollView>
+                
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" FlowDirection="MatchParent" HorizontalOptions="EndAndExpand"   >
+
+                <Grid Margin="25" Padding="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Entry Grid.Row="0" Grid.Column="0" Placeholder="Nombre de usuario"/>
+                    <Button  Margin="5" Text="Añadir contacto" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Column="1" Clicked="AddContact_Clicked"/>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

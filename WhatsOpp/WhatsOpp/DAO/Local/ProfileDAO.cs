@@ -28,6 +28,18 @@ namespace WhatsOpp.DAO.Local {
             if (profile == null) throw new Exception("ProfileDAO [Delete] - OBJECT_NULL");
             connection.DeleteAsync(profile).Wait();
         }
+        internal Boolean isEmpty()
+        {
+            List<Profile> result = connection.QueryAsync<Profile>("SELECT * FROM Profile").Result;
+            if ((result == null) || (result.Count == 0))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         internal Profile GetValue()
         {
             List<Profile> result = connection.QueryAsync<Profile>("SELECT * FROM Profile").Result;
@@ -40,9 +52,22 @@ namespace WhatsOpp.DAO.Local {
                 return result[0];
             }
         }
+        internal int CountRows()
+        {
+            List<Profile> result = connection.QueryAsync<Profile>("SELECT * FROM Profile").Result;
+            if ((result == null) || (result.Count == 0))
+            {
+                return 0;
+            }
+            else
+            {
+                return result.Count;
+            }
+        }
         internal void DeleteAll()
         {
-            connection.DeleteAsync(0).Wait();
+            connection.ExecuteAsync("Delete from Profile");
+
         }
     }
 }

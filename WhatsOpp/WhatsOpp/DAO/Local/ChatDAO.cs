@@ -33,5 +33,22 @@ namespace WhatsOpp.DAO.Local {
             var l = connection.Table<Chat>().ToListAsync().Result;
             return new ObservableCollection<Chat>(l);
         }
+        internal int CountRows()
+        {
+            List<Chat> result = connection.QueryAsync<Chat>("SELECT * FROM Chat").Result;
+            if ((result == null) || (result.Count == 0))
+            {
+                return 0;
+            }
+            else
+            {
+                return result.Count;
+            }
+        }
+        internal void DeleteAll()
+        {
+            connection.ExecuteAsync("Delete from Chat");
+
+        }
     }
 }

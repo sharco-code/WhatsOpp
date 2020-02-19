@@ -82,6 +82,15 @@ namespace WhatsOpp.View {
 
         private void Login_Clicked(object sender, EventArgs e)
         {
+            App.Current.MainPage = new LoginView
+            {
+                BindingContext = new LoginViewModel
+                {
+                    LoginSendDTO = new LoginSendDTO()
+                }
+            };
+            /*
+             * 
             Navigation.PushAsync(new LoginView
             {
                 BindingContext = new LoginViewModel
@@ -89,6 +98,7 @@ namespace WhatsOpp.View {
                     LoginSendDTO = new LoginSendDTO()
                 }
             });
+        */
         }
     }
 }

@@ -20,5 +20,10 @@ namespace WhatsOpp.View.MainViewPages {
         {
 
         }
+
+        private async void AddContact_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

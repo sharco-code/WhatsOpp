@@ -1,9 +1,12 @@
 ﻿using SQLite;
 using System;
 using WhatsOpp.Config;
+using WhatsOpp.DAO.Local;
+using WhatsOpp.DTO.Send;
 using WhatsOpp.Model;
 using WhatsOpp.Model.Local;
 using WhatsOpp.View;
+using WhatsOpp.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,12 +14,32 @@ namespace WhatsOpp {
     public partial class App : Application {
 
         private SQLiteAsyncConnection connection;
+        private ConfigurationDAO configurationDAO = new ConfigurationDAO(Cfg.Database);
+        private ProfileDAO profileDAO = new ProfileDAO(Cfg.Database);
         public App()
         {
             InitializeComponent();
 
-            //MainPage = new InitView();
-            MainPage = new NavigationPage(new InitView());
+            if(configurationDAO.isEmpty())
+            {
+                MainPage = new InitView();
+                configurationDAO.Insert(new Configuration(1));
+            } else
+            {
+                if(profileDAO.isEmpty())
+                {
+                    MainPage = new LoginView {
+                        BindingContext = new LoginViewModel
+                        {
+                            LoginSendDTO = new LoginSendDTO()
+                        }
+                    };
+                } else
+                {
+                    MainPage = new NavigationPage(new MainView());
+                }
+                
+            }
         }
 
         protected override void OnStart()
