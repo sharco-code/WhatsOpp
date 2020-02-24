@@ -4,6 +4,6 @@ using System.Text;
 
 namespace WhatsOpp.DTO.Get {
     public class TokenGetDTO {
-        public String TOKEN { get; set; }
+        public String Token { get; set; }
     }
 }

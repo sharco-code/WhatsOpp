@@ -11,7 +11,7 @@ namespace WhatsOpp.ViewModel {
 
         public SinginSendDTO SinginSendDTO { get; set; }
 
-        private SinginDAO singinDAO = new SinginDAO();
+        private SinginDAO_SERVER singinDAO = new SinginDAO_SERVER();
 
         public void SendSingin()
         {

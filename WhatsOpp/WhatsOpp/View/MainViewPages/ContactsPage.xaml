@@ -8,47 +8,32 @@
              x:Class="WhatsOpp.View.MainViewPages.ContactsPage">
 
     <ContentPage.Content>
-        
-        <StackLayout >
-            
-            
-            <StackLayout VerticalOptions="EndAndExpand">
-                <ScrollView>
-                    <Grid Margin="25"  BackgroundColor="Azure">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+        <StackLayout>
 
-                        <Label FontSize="Large" HorizontalOptions="Center"/>
-                        <ListView Margin="20" ItemTapped="ContactList_ItemTapped" ItemsSource="{Binding ContactList}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextCell Text="{Binding Username}" Detail="{Binding Name}"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </ScrollView>
-                
-            </StackLayout>
-            <StackLayout VerticalOptions="FillAndExpand" FlowDirection="MatchParent" HorizontalOptions="EndAndExpand"   >
+            <Frame VerticalOptions="FillAndExpand" >
+                <StackLayout Orientation="Horizontal">
+                    <Entry Placeholder="Nombre de usuario" Text="{Binding AddContactSendDTO.Username}"/>
+                    <Button Text="Añadir contacto" TextColor="Blue" BackgroundColor="AliceBlue"  Clicked="AddContact_Clicked"/>
+                </StackLayout>
+            </Frame>
 
-                <Grid Margin="25" Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Entry Grid.Row="0" Grid.Column="0" Placeholder="Nombre de usuario"/>
-                    <Button  Margin="5" Text="Añadir contacto" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Column="1" Clicked="AddContact_Clicked"/>
-                </Grid>
-            </StackLayout>
+
+            <Frame >
+
+
+
+                <ListView ItemTapped="ContactList_ItemTapped" ItemsSource="{Binding ContactList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Username}" Detail="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    
+            </Frame>
+           
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

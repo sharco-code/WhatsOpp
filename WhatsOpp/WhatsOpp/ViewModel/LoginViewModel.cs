@@ -27,7 +27,7 @@ namespace WhatsOpp.ViewModel {
                 LoginGetDTO loginGetDTO = loginDAO.Login(LoginSendDTO);
 
                 //Añadir Perfil obtenido del Servidor en la base de datos local
-                Profile p = new Profile(loginGetDTO.Profile.Username, loginGetDTO.Profile.Name, loginGetDTO.Profile.Phone, loginGetDTO.Profile.TOKEN);
+                Profile p = new Profile(loginGetDTO.Profile.Username, loginGetDTO.Profile.Name, loginGetDTO.Profile.Email, loginGetDTO.Profile.Phone, loginGetDTO.Profile.TOKEN);
                 profileDAO.Insert(p);
 
                 //Añadir Contactos obtenidos del Servidor en la base de datos local

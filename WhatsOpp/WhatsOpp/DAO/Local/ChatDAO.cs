@@ -50,5 +50,6 @@ namespace WhatsOpp.DAO.Local {
             connection.ExecuteAsync("Delete from Chat");
 
         }
+
     }
 }

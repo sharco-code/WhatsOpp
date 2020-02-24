@@ -6,7 +6,7 @@ using System.Text;
 using WhatsOpp.Model.Local;
 
 namespace WhatsOpp.DAO.Local {
-    class ContactDAO {
+    public class ContactDAO {
         private SQLiteAsyncConnection connection;
         public ContactDAO(string dbpath)
         {

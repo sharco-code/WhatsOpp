@@ -16,10 +16,11 @@ namespace WhatsOpp.Model.Local {
         {
 
         }
-        public Profile(String Username, String Name, int Phone, String TOKEN)
+        public Profile(String Username, String Name, String Email, int Phone, String TOKEN)
         {
             this.Username = Username;
             this.Name = Name;
+            this.Email = Email;
             this.Phone = Phone;
             this.TOKEN = TOKEN;
         }
