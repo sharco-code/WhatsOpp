@@ -14,6 +14,7 @@ namespace WhatsOpp.ViewModel {
         private ProfileDAO profileDAO = new ProfileDAO(Cfg.Database);
         private ContactDAO contactDAO = new ContactDAO(Cfg.Database);
         private ChatDAO chatDAO = new ChatDAO(Cfg.Database);
+        private MessageDAO messageDAO = new MessageDAO(Cfg.Database);
         public ProfilePageViewModel()
         {
 
@@ -25,6 +26,7 @@ namespace WhatsOpp.ViewModel {
             profileDAO.DeleteAll();
             contactDAO.DeleteAll();
             chatDAO.DeleteAll();
+            messageDAO.DeleteAll();
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             BackgroundColor="Aquamarine"
+             BackgroundColor="#25A220"
              x:Class="WhatsOpp.View.MainViewPages.ProfilePage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="AliceBlue" VerticalOptions="FillAndExpand">
@@ -59,7 +59,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button  Text="Cerrar Sesión" FontSize="Small" Clicked="Logout_Clicked" TextColor="White" BackgroundColor="Aquamarine" Grid.Column="0"></Button>
+                    <Button  Text="Cerrar Sesión" FontSize="Small" Clicked="Logout_Clicked" TextColor="White" BackgroundColor="#25A220" Grid.Column="0"></Button>
                     <Button  Margin="5" Text="Editar perfil" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Column="1" Clicked="Edit_Clicked"/>
                 </Grid>
             </StackLayout>

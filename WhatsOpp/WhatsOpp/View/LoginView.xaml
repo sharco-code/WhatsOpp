@@ -5,12 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WhatsOpp.View.LoginView"
-             BackgroundColor="Aquamarine"
+             BackgroundColor="#25A220"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <StackLayout BackgroundColor="AliceBlue" Margin="10" VerticalOptions="FillAndExpand">
-            <Label Margin="20" Text="WhatsOpp™" FontSize="Header" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Aquamarine" FontAttributes="Bold"/>
+            <Label Margin="20" Text="WhatsOpp™" FontSize="Header" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" TextColor="#25A220" FontAttributes="Bold"/>
             <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
                 <Label Text="Para utilizar WhatsOpp™ debes crearte una cuenta" HorizontalTextAlignment="Center" />
 
@@ -48,7 +48,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Text="Iniciar sesión" FontSize="Medium" Clicked="Login_Clicked" TextColor="White" BackgroundColor="Aquamarine" Grid.Row="0"></Button>
+                    <Button Text="Iniciar sesión" FontSize="Medium" Clicked="Login_Clicked" TextColor="White" BackgroundColor="#25A220" Grid.Row="0"></Button>
                     <Button  Margin="5" Text="¿No tienes cuenta? Registrate" TextColor="Blue" BackgroundColor="AliceBlue" Grid.Row="1" Clicked="Register_Clicked"/>
                 </Grid>
             </StackLayout>

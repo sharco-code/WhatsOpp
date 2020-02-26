@@ -4,11 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             BackgroundColor="AliceBlue"
+             BackgroundColor="#25A220"
              x:Class="WhatsOpp.View.MainViewPages.ContactsPage">
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="AliceBlue">
 
             <Frame VerticalOptions="FillAndExpand" >
                 <StackLayout Orientation="Horizontal">
@@ -17,18 +17,18 @@
                 </StackLayout>
             </Frame>
 
-            <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine">
+            <Frame BackgroundColor="AliceBlue" BorderColor="#25A220">
                 <ListView
                 HasUnevenRows="False"
                 ItemTapped="ContactList_ItemTapped"
                 ItemsSource="{Binding ContactList}"
-                SeparatorColor="Aquamarine"
+                SeparatorColor="#25A220"
                 SeparatorVisibility="Default">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine">
+                                <Frame BackgroundColor="AliceBlue" BorderColor="#25A220" Padding="10" Margin="0,0,0,20">
                                     <Grid RowSpacing="0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />

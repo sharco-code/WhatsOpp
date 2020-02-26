@@ -46,7 +46,7 @@ namespace WhatsOpp.View {
 
         private async void Terms_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Terminos y Condiciones", "Al aceptar los Terminos y Condiciones de WhatsOpp™ cedes todas tus bienes presentes y futuros al propietario de la aplicación.\n\nAdemás, transcurridos 15 segundos del uso de esta aplicación se te aplicara un cargo de 4000 USD a tu cuenta corriente, en caso de no poder pagarlo, estarás endeudado hasta el pago del mismo.\n\nPara más información puedes llamar a nuestro servicio de atención al cliente llamando al 644226178 (Disp: 03:01-03:02)", "Aceptar");
+            await DisplayAlert("Terminos y Condiciones", "Al aceptar los Terminos y Condiciones de WhatsOpp™ estas obligado a aprobar a el alumno propietario de la aplicación, admás cedes todas tus bienes presentes y futuros al propietario de la aplicación.\n\nAdemás, transcurridos 15 segundos del uso de esta aplicación se te aplicara un cargo de 4000 USD a tu cuenta corriente, en caso de no poder pagarlo, estarás endeudado hasta el pago del mismo.\n\nPara más información puedes llamar a nuestro servicio de atención al cliente llamando al 644226178 (Disp: 03:01-03:02)", "Aceptar");
         }
 
     }

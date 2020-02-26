@@ -61,7 +61,7 @@ namespace WhatsOpp.ViewModel {
         
         public void refresh()
         {
-
+            if (this.profileDAO.GetValue() == null) return;
             IList<Message> messages = messageDAO_SERVER.refresh(new MessageSendDTO(this.profileDAO.GetValue().Token, this.chat.ChatID)).Messages;
             foreach (Message message in messages)
             {

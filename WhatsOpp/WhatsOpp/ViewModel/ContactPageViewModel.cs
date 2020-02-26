@@ -63,6 +63,7 @@ namespace WhatsOpp.ViewModel {
         }
         public void refresh()
         {
+            if (this.profileDAO.GetValue() == null) return;
             ContactList.Clear();
             foreach (ContactSERVER contactSERVER in contactDAO_SERVER.refresh(new TokenSendDTO(this.profileDAO.GetValue().Token)).Contacts)
             {

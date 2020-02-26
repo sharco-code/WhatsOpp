@@ -76,7 +76,7 @@ namespace WhatsOpp.DAO.Server {
                 var content = response.Result.Content.ReadAsStringAsync();
 
                 ChatRefreshGetDTO chatSERVER = JsonConvert.DeserializeObject<ChatRefreshGetDTO>(content.Result);
-                if (chatSERVER.Chats[0].Name == null)
+                if (chatSERVER.Chats == null)
                 {
                     Error error = JsonConvert.DeserializeObject<Error>(content.Result);
                     throw new MyException(error.Code, error.Message);

@@ -45,7 +45,7 @@ namespace WhatsOpp.DAO.Local {
             List<Profile> result = connection.QueryAsync<Profile>("SELECT * FROM Profile").Result;
             if ((result == null) || (result.Count == 0))
             {
-                throw new Exception("ProfileDAO [Delete] - EMPTY_TABLE");
+                return null;
             }
             else
             {
