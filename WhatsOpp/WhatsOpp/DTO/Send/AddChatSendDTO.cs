@@ -4,16 +4,16 @@ using System.Text;
 
 namespace WhatsOpp.DTO.Send {
     public class AddChatSendDTO {
-        public String TOKEN { get; set; }
+        public String Token { get; set; }
         public int ContactID { get; set; }
 
         public AddChatSendDTO()
         {
 
         }
-        public AddChatSendDTO(String TOKEN, int ContactID)
+        public AddChatSendDTO(String Token, int ContactID)
         {
-            this.TOKEN = TOKEN;
+            this.Token = Token;
             this.ContactID = ContactID;
         }
     }

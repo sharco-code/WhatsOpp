@@ -7,25 +7,39 @@
              BackgroundColor="Aquamarine"
              x:Class="WhatsOpp.View.MainViewPages.ChatsPage">
     <ContentPage.Content>
-        <StackLayout >
-            <Grid  BackgroundColor="Azure">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+        <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine">
+            <ListView
+                HasUnevenRows="False"
+                ItemTapped="ChatList_ItemTapped"
+                ItemsSource="{Binding ChatList}"
+                SeparatorColor="Aquamarine"
+                SeparatorVisibility="Default">
 
-                <Label FontSize="Large" HorizontalOptions="Center"/>
-                <ListView Margin="20" ItemTapped="ChatList_ItemTapped" ItemsSource="{Binding ChatList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </StackLayout>
-    </ContentPage.Content>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine">
+                                <Grid RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontSize="15"
+                                        Text="{Binding Name}" />
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Frame>
+        </ContentPage.Content>
 </ContentPage>

@@ -19,14 +19,22 @@ namespace WhatsOpp.View.MainViewPages {
 
         private void Logout_Clicked(object sender, EventArgs e)
         {
-            ((ProfilePageViewModel)BindingContext).LogOut();
-            App.Current.MainPage = new LoginView
+            try
             {
-                BindingContext = new LoginViewModel
+                ((ProfilePageViewModel)BindingContext).LogOut();
+                App.Current.MainPage = new LoginView
                 {
-                    LoginSendDTO = new LoginSendDTO()
-                }
-            };
+                    BindingContext = new LoginViewModel
+                    {
+                        LoginSendDTO = new LoginSendDTO()
+                    }
+                };
+            }
+            catch(Exception x)
+            {
+
+            }
+            
         }
 
         private async void Edit_Clicked(object sender, EventArgs e)

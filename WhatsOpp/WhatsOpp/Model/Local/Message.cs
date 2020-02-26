@@ -11,6 +11,8 @@ namespace WhatsOpp.Model.Local {
         public int Order { get; set; }
         public String Date { get; set; }
         public String Text { get; set; }
-        
+
+        public String Name { get; set; }
+
     }
 }

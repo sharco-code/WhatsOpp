@@ -17,21 +17,45 @@
                 </StackLayout>
             </Frame>
 
+            <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine">
+                <ListView
+                HasUnevenRows="False"
+                ItemTapped="ContactList_ItemTapped"
+                ItemsSource="{Binding ContactList}"
+                SeparatorColor="Aquamarine"
+                SeparatorVisibility="Default">
 
-            <Frame >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontSize="15"
+                                        Text="{Binding Name}" />
+                                        <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontSize="15"
+                                        Text="{Binding Username}" />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
 
-
-
-                <ListView ItemTapped="ContactList_ItemTapped" ItemsSource="{Binding ContactList}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextCell Text="{Binding Username}" Detail="{Binding Name}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    
+                </ListView>
             </Frame>
+           
            
 
         </StackLayout>

@@ -32,7 +32,7 @@ namespace WhatsOpp.ViewModel {
             try
             {
 
-                this.AddContactSendDTO.Token = this.profileDAO.GetValue().TOKEN;
+                this.AddContactSendDTO.Token = this.profileDAO.GetValue().Token;
                 ContactSERVER c = contactDAO_SERVER.SendAddContact(AddContactSendDTO);
 
                 /*
@@ -54,7 +54,7 @@ namespace WhatsOpp.ViewModel {
             try
             {
 
-                chatDAO_SERVER.SendAddChat(new AddChatSendDTO(this.profileDAO.GetValue().TOKEN, contact.ContactID));
+                chatDAO_SERVER.SendAddChat(new AddChatSendDTO(this.profileDAO.GetValue().Token, contact.ContactID));
             }
             catch (MyException e)
             {
@@ -64,7 +64,7 @@ namespace WhatsOpp.ViewModel {
         public void refresh()
         {
             ContactList.Clear();
-            foreach (ContactSERVER contactSERVER in contactDAO_SERVER.refresh(new TokenSendDTO(this.profileDAO.GetValue().TOKEN)).Contacts)
+            foreach (ContactSERVER contactSERVER in contactDAO_SERVER.refresh(new TokenSendDTO(this.profileDAO.GetValue().Token)).Contacts)
             {
                 Contact c = new Contact(contactSERVER.ContactID, contactSERVER.Username, contactSERVER.Name);
                 contactDAO.Insert(c);

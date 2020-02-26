@@ -66,7 +66,6 @@ namespace WhatsOpp.DAO.Server {
                 throw new MyException(error.Code, error.Message);
             }
 
-            return null;
         }
 
         public ContactsRefreshGetDTO refresh(TokenSendDTO tokenSendDTO)
@@ -83,7 +82,7 @@ namespace WhatsOpp.DAO.Server {
                 var content = response.Result.Content.ReadAsStringAsync();
 
                 ContactsRefreshGetDTO contactSERVER = JsonConvert.DeserializeObject<ContactsRefreshGetDTO>(content.Result);
-                if (contactSERVER.Contacts[0].Name == null)
+                if (contactSERVER.Contacts == null)
                 {
                     Error error = JsonConvert.DeserializeObject<Error>(content.Result);
                     throw new MyException(error.Code, error.Message);

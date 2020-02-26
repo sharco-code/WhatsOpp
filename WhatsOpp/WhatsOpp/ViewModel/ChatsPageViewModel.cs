@@ -29,7 +29,7 @@ namespace WhatsOpp.ViewModel {
         public void refresh()
         {
             ChatList.Clear();
-            foreach (ChatSERVER chatSERVER in chatDAO_SERVER.refresh(new TokenSendDTO(this.profileDAO.GetValue().TOKEN)).Chats)
+            foreach (ChatSERVER chatSERVER in chatDAO_SERVER.refresh(new TokenSendDTO(this.profileDAO.GetValue().Token)).Chats)
             {
                 Chat c = new Chat(chatSERVER.ChatID, chatSERVER.ContactID, chatSERVER.Username, chatSERVER.Name);
                 chatDAO.Insert(c);

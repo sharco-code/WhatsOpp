@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhatsOpp.View.ChatView">
+    <NavigationPage.TitleView >
+        <StackLayout 
+          VerticalOptions="Center" HorizontalOptions="Center" >
+            <Label Text="{Binding chat.Name}" HorizontalTextAlignment="Center" FontSize="Medium" ></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Frame VerticalOptions="FillAndExpand">
+                <Label Text="{Binding chat.Name}" HorizontalTextAlignment="Center" FontSize="Medium" ></Label>
+
+            </Frame>
+            <!--  Messages in Row 0  -->
+            <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine">
+                <ListView
+                    x:Name="listMessages"
+                    ItemsSource="{Binding MessageList}"
+                    SeparatorColor="Aquamarine">
+                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+
+                                    <Frame BackgroundColor="AliceBlue" BorderColor="Aquamarine" Padding="10" >
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Frame HorizontalOptions="End" BackgroundColor="#49B466" Margin="0" Padding="0"  >
+                                                <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            FontSize="15"
+                                                TextColor="White"
+                                            Text="{Binding Name}"  />
+                                            </Frame>
+
+                                            <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            FontSize="15"
+                                            Text="{Binding Text}" HorizontalOptions="End" />
+                                        </Grid>
+
+
+
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </Frame>
+
+            <!--  Entry and Send button in Row 1  -->
+            <StackLayout
+                Grid.Row="1"
+                Padding="10"
+                BackgroundColor="#EFEFEF"
+                Orientation="Horizontal">
+                <Entry
+                    x:Name="mensaje"
+                    HeightRequest="25"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Message"
+                    Text="" />
+                <Button Clicked="sendTextClicked" Text="Send" />
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

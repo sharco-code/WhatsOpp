@@ -20,7 +20,16 @@ namespace WhatsOpp {
         {
             InitializeComponent();
 
-            if(configurationDAO.isEmpty())
+            //Crear o cargar las tablas de base de datos a partir de los modelos
+            connection = new SQLiteAsyncConnection(Cfg.Database);
+
+            connection.CreateTableAsync<Profile>().Wait();
+            connection.CreateTableAsync<Chat>().Wait();
+            connection.CreateTableAsync<Contact>().Wait();
+            connection.CreateTableAsync<Message>().Wait();
+            connection.CreateTableAsync<Configuration>().Wait();
+
+            if (configurationDAO.isEmpty())
             {
                 MainPage = new InitView();
                 configurationDAO.Insert(new Configuration(1));
@@ -44,15 +53,9 @@ namespace WhatsOpp {
 
         protected override void OnStart()
         {
-            //Crear o cargar las tablas de base de datos a partir de los modelos
             
-            connection = new SQLiteAsyncConnection(Cfg.Database);
-
-            connection.CreateTableAsync<Profile>().Wait();
-            connection.CreateTableAsync<Chat>().Wait();
-            connection.CreateTableAsync<Contact>().Wait();
-            connection.CreateTableAsync<Message>().Wait();
-            connection.CreateTableAsync<Configuration>().Wait();
+            
+            
             
         }
 
